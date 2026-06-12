@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Check HTML validity
+      run: |
+        npx html-validate index.html || echo "HTML validation warnings (non-blocking)"
+
+    - name: Check CSS syntax
+      run: |
+        npx stylelint "css/*.css" || echo "CSS lint warnings (non-blocking)"
+
+    - name: Check JS syntax
+      run: |
+        npx eslint "js/*.js" || echo "JS lint warnings (non-blocking)"
+
+    - name: Validate no placeholder content
+      run: |
+        if grep -r "lorem ipsum\|your code here\|TODO\|FIXME" --include="*.html" --include="*.css" --include="*.js" .; then
+          echo "Found placeholder content!"
+          exit 1
+        fi
+        echo "No placeholders found"

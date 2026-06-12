@@ -1,0 +1,26 @@
+# DNS Shop .gitignore
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (если вдруг)
+node_modules/
+npm-debug.log*
+
+# Build (если будет сборка)
+dist/
+build/
+
+# Env
+.env
+.env.local
+
+# Logs
+*.log

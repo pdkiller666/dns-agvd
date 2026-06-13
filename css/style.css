@@ -400,12 +400,12 @@ ul {
 }
 
 .btn--primary {
-  background: var(--primary);
+  background: #28a745;
   color: var(--white);
 }
 
 .btn--primary:hover {
-  background: var(--primary-dark);
+  background: #218838;
   transform: scale(1.02);
 }
 
